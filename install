@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
+
+ln -sf $DOTFILES/git/gitconfig $HOME/.gitconfig
+
+cp $DOTFILES/git/gitignore_global $HOME/.gitignore_global
+
+mkdir -p $HOME/.config/macchina
+
+ln -sf $DOTFILES/macchina/macchina.toml $HOME/.config/macchina/macchina.toml
+
+mkdir -p $HOME/.local/bin
+
+ln -sf $DOTFILES/scripts/ssh-key $HOME/.local/bin/ssh-key
+ln -sf $DOTFILES/scripts/ssh-add-host $HOME/.local/bin/ssh-add-host
+ln -sf $DOTFILES/scripts/login.sh $HOME/.login.sh
+
+mkdir -p $HOME/.nvm
+ln -sf $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi

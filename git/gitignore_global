@@ -1,0 +1,48 @@
+# Useful `.gitignore` templates:
+# https://github.com/github/gitignore
+
+# Linux
+
+*~
+
+
+# Node.js & npm.
+
+node_modules
+npm-debug.log
+
+
+# macOS
+
+._*
+.AppleDouble
+.DS_Store
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
+
+
+# Vim
+
+%*
+*.sw[a-z]
+*.un~
+.netrwhist
+Session.vim
+
+
+# Windows
+
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+
+
+# Builds
+.cache
+
+
+.ssh
+_ide_helper.php

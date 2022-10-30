@@ -1,0 +1,136 @@
+#
+#        ..... .........
+#       ...... ...   ....
+#      ....... ...    ...
+#     .... ... ...   ....
+#    ....  ... ........
+#   ....   ... ... ....
+#  ........... ...  ....
+# ....     ... ...   ....
+#
+# Personal zsh configuration of Adam Richardson
+
+#--------------------------------------------------------------------------
+# Oh My Zsh
+#--------------------------------------------------------------------------
+
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="robbyrussell"
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
+plugins=(
+    artisan
+    npm
+    composer
+    git
+    z
+)
+
+source $ZSH/oh-my-zsh.sh
+
+#--------------------------------------------------------------------------
+# Configuration
+#--------------------------------------------------------------------------
+
+# Decrease delay that vi-mode waits for the end of a key sequence
+export KEYTIMEOUT=15
+
+typeset -U path cdpath fpath
+path=(
+    $HOME/.local/bin
+    $HOME/.config/composer/vendor/bin
+    ./vendor/bin
+    $path
+)
+
+setopt auto_cd
+cdpath=(
+    $HOME/Personal
+)
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format %d
+zstyle ':completion:*:descriptions' format %B%d%b
+zstyle ':completion:*:complete:(cd|pushd):*' tag-order \
+    'local-directories named-directories'
+
+export EDITOR=vim
+export GIT_EDITOR=vim
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+export ARTISAN_OPEN_ON_MAKE_EDITOR=nvr
+export FZF_DEFAULT_COMMAND='ag -u -g ""'
+
+unsetopt sharehistory
+
+#--------------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------------
+
+alias tree="find . | sed 's/[^/]*\//|   /g;s/| *\([^| ]\)/+--- \1/'"
+alias lssh='egrep "Host\ .*" ~/.ssh/config | cut -f2 -d " "'
+
+# Laravel
+alias a="artisan"
+alias tinker="artisan tinker"
+alias serve="artisan serve"
+alias mfs="artisan migrate:fresh --seed"
+
+# Git
+alias g="git"
+alias gs="git s"
+alias nah="git reset --hard;git clean -df"
+alias co="git checkout"
+alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "master" || echo "main")'
+
+
+
+alias desktop-hide="defaults write com.apple.finder CreateDesktop -bool false;killall Finder;"
+alias desktop-show="defaults write com.apple.finder CreateDesktop -bool true;killall Finder;"
+
+# Hide/Show hidden files in Finder.
+
+alias hide-hidden-files="defaults write com.apple.finder AppleShowAllFiles -bool false \
+							&& killall Finder"
+
+alias show-hidden-files="defaults write com.apple.finder AppleShowAllFiles -bool true \
+							&& killall Finder"
+
+
+# Open with no arguments (opens the current directory),
+# otherwise opens the given argument.
+
+o() {
+	if [ $# -eq 0 ]; then
+		open .;
+	else
+		open "$@";
+	fi
+}
+
+#--------------------------------------------------------------------------
+# Miscellaneous
+#--------------------------------------------------------------------------
+
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source $HOME/.login.sh
