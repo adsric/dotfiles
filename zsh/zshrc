@@ -79,6 +79,8 @@ alias a="artisan"
 alias tinker="artisan tinker"
 alias serve="artisan serve"
 alias mfs="artisan migrate:fresh --seed"
+alias phpstan="./vendor/bin/phpstan analyse"
+alias pint="./vendor/bin/pint"
 
 # Git
 alias g="git"
