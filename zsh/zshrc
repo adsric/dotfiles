@@ -80,6 +80,7 @@ alias tinker="artisan tinker"
 alias serve="artisan serve"
 alias mfs="artisan migrate:fresh --seed"
 alias phpstan="./vendor/bin/phpstan analyse"
+alias pest="./vendor/bin/pest"
 alias pint="./vendor/bin/pint"
 
 # Git
