@@ -8,10 +8,6 @@ ln -sf $DOTFILES/git/gitconfig $HOME/.gitconfig
 
 cp $DOTFILES/git/gitignore_global $HOME/.gitignore_global
 
-mkdir -p $HOME/.config/macchina
-
-ln -sf $DOTFILES/macchina/macchina.toml $HOME/.config/macchina/macchina.toml
-
 mkdir -p $HOME/.local/bin
 
 ln -sf $DOTFILES/scripts/ssh-key $HOME/.local/bin/ssh-key

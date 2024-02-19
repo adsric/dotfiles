@@ -13,4 +13,4 @@ printf "
  ........... ...  ....     macOS $os
 ....     ... ...   ....    $sysUsed
 
-" | lolcat --seed=30 --spread=8
+"

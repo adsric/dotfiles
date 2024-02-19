@@ -12,33 +12,34 @@ The tools and library requirements for a complete installation.
 
 ### Xcode Tools
 
-```xcode-select --install```
+`xcode-select --install`
+
+`softwareupdate --install-rosetta --agree-to-license`
+
+### Laravel Herd
+
+Download [Herd](https://herd.laravel.com)
 
 ### Homebrew
 
-```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 Brew packages
 
 - git
 - gpg
 - pinentry-mac
-- php
-- [mailhog](https://github.com/mailhog/MailHog)
 - [mackup](https://github.com/lra/mackup)
-- [macchina](https://github.com/Macchina-CLI/macchina)
 
 ### NVM
 
-```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash```
-
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash`
 
 ## Installation
 
 Run
 
-```sh install```
-
+`sh install`
 
 The install will symlink the dotfiles to the root of your system.
 
@@ -46,12 +47,11 @@ The install will symlink the dotfiles to the root of your system.
 
 The zshrc will setup up ZSH with Oh My ZSH. Then clone below the following plugins.
 
-```git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting```
+`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 
-```git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions```
+`git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
 
-```git clone https://github.com/jessarcher/zsh-artisan.git ~/.oh-my-zsh/custom/plugins/artisan```
-
+`git clone https://github.com/jessarcher/zsh-artisan.git ~/.oh-my-zsh/custom/plugins/artisan`
 
 ## Gotchas
 
